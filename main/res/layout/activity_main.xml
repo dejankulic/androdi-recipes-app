@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/MainVieww"
+    android:background="@color/white"
+    tools:context=".presentation.view.activity.MainActivity">
+
+    <EditText
+        android:id="@+id/searchEt"
+        android:layout_width="230dp"
+        android:layout_height="60dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_margin="20dp"
+        android:hint="Type keywords here"
+        />
+    <Button
+        android:id="@+id/searchButton"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="120dp"
+        android:text="Search"
+        android:layout_height="60dp"
+        android:layout_margin="20dp"/>
+
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:id="@+id/shimmerLayout12"
+        android:layout_width="match_parent"
+        android:layout_height="700dp"
+        android:visibility="gone"
+        app:shimmer_repeat_mode="restart"
+        app:shimmer_shape="radial"
+        app:layout_constraintTop_toBottomOf="@id/searchButton">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <include layout="@layout/layout_shimmer_search"></include>
+
+            <include layout="@layout/layout_shimmer_search"></include>
+
+        </LinearLayout>
+    </com.facebook.shimmer.ShimmerFrameLayout>
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:id="@+id/shimmerLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="700dp"
+        app:shimmer_repeat_mode="restart"
+        app:shimmer_shape="radial"
+        app:layout_constraintTop_toBottomOf="@id/searchButton">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <include layout="@layout/layout_shimmer"></include>
+
+            <include layout="@layout/layout_shimmer"></include>
+
+            <include layout="@layout/layout_shimmer"></include>
+
+            <include layout="@layout/layout_shimmer"></include>
+
+            <include layout="@layout/layout_shimmer"></include>
+
+            <include layout="@layout/layout_shimmer"></include>
+        </LinearLayout>
+    </com.facebook.shimmer.ShimmerFrameLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/listRv"
+        android:visibility="visible"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/searchButton"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="16dp"
+        />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/categItemRv"
+        android:layout_width="match_parent"
+        android:visibility="gone"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@+id/searchButton"
+        app:layout_constraintBottom_toTopOf="@id/linear111"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <LinearLayout
+        android:gravity="center"
+        android:id="@+id/linear111"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/categItemRv"
+        android:layout_width="wrap_content"
+        android:layout_margin="20dp"
+        android:layout_height="wrap_content"
+        >
+            <Button
+                android:text="Go Back"
+            android:id="@+id/backButton"
+            android:layout_width="150dp"
+                android:visibility="gone"
+            android:gravity="center"
+            android:layout_height="50dp"
+
+        />
+
+    </LinearLayout>
+     <ImageView
+        android:id="@+id/singleMealPicture"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:visibility="gone"
+        android:scaleType="centerCrop"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+    <TextView
+        android:id="@+id/mealName"
+        android:text="test"
+        android:textSize="20sp"
+        android:layout_width="270dp"
+        android:layout_height="60dp"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@+id/singleMealPicture"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_margin="10dp"
+        />
+    <TextView
+        android:id="@+id/ingredients"
+        android:layout_width="270dp"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        android:layout_height="60dp"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@+id/mealName"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_margin="10dp"
+        />
+    <TextView
+        android:id="@+id/cenaJednogJela"
+        android:layout_width="100dp"
+        android:layout_height="60dp"
+        android:visibility="gone"
+        android:textColor="#FF0000"
+        android:layout_margin="10dp"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toTopOf="@+id/scroll"
+        app:layout_constraintStart_toEndOf="@+id/ingredients"/>
+
+    <ScrollView
+        android:id="@+id/scroll"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_margin="10dp"
+        app:layout_constraintTop_toBottomOf="@+id/ingredients">
+
+        <TextView
+            android:inputType="textMultiLine"
+            android:id="@+id/sastojci"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            app:layout_constraintTop_toBottomOf="@+id/ingredients" />
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/linear"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@+id/scroll">
+
+        <Button
+            android:visibility="gone"
+            android:layout_gravity="center"
+            android:id="@+id/saveButton"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:text="Save Recepie"
+            app:layout_constraintTop_toBottomOf="@+id/sastojci"
+            />
+        <Button
+            android:visibility="gone"
+            android:layout_gravity="center"
+            android:id="@+id/backFromMealButton"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:text="Go Back"
+            android:layout_marginLeft="10dp"
+            app:layout_constraintStart_toEndOf="@+id/saveButton"
+            app:layout_constraintTop_toBottomOf="@+id/sastojci"
+            />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
